@@ -14,4 +14,25 @@ public class Homework1{
 }
 ```
 
+### Homework2
+```java
+public class Homework2 {
+    public static void main(String[] args) {
+        int n = 20;
+        int first = 1;
+        int second = 1;
+
+        System.out.print(first + " " + second + " ");
+
+        for (int i = 3; i <= n; i++) {
+            int next = first + second;
+            System.out.print(next + " ");
+            
+            first = second;
+            second = next;
+        }
+    }
+}
+```
+
 ![Alt homework11](./images/homework1.jpg)
