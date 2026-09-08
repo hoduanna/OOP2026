@@ -98,7 +98,7 @@ public class Homework3 {
 }
 
 ```
-![Alt homework2](./images/homework3.png)
+![Alt homework3](./images/homework3.png)
 
 ### Homework4
 ```java
@@ -113,5 +113,69 @@ public class MultiplicationTable {
     }
 }
 ```
-![Alt homework2](./images/homework4.png)
+![Alt homework4](./images/homework4.png)
 
+### Homework5
+```java
+public class Homework5 {
+    public static void main(String[] args) {
+        GregoryLeibniz();
+        Madhava();
+    }
+
+    public static void GregoryLeibniz(){
+        double pi = 0.0;
+        double sign = 1.0;
+        int iterations = 1000;
+
+        for (int i = 0; i < iterations; i++) {
+            double denominator = 2 * i + 1;
+            pi += sign * (4.0 / denominator);
+            sign = -sign;
+        }
+
+        System.out.println("원주율: " + pi);
+    }
+
+    public static void Madhava(){
+        double sum = 0.0;
+        int iterations = 30;
+
+        for (int k = 0; k < iterations; k++) {
+            double term = Math.pow(-3, -k) / (2 * k + 1);
+            sum += term;
+        }
+
+        double pi = Math.sqrt(12) * sum;
+
+        System.out.println("원주율: " + pi);
+    }
+}
+```
+![Alt homework5](./images/homework5.png)
+
+### Homework6
+```java
+public class Homework6 {
+    public static void main(String[] args) {
+        int[][] binomial = new int[10][];
+
+        for (int i = 0; i < 10; i++) {
+            binomial[i] = new int[i + 1];
+            binomial[i][0] = 1;
+            binomial[i][i] = 1;
+            for (int j = 1; j < i; j++) {
+                binomial[i][j] = binomial[i - 1][j - 1] + binomial[i - 1][j];
+            }
+        }
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j <= i; j++) {
+                System.out.print(binomial[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+![Alt homework6](./images/homework6.png)
