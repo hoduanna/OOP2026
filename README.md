@@ -179,3 +179,61 @@ public class Homework6 {
 }
 ```
 ![Alt homework6](./images/homework6.png)
+
+### Homework7
+```java
+public class Homework7 {
+    public static void main(String[] args) {
+        int data[] = new int[20];
+        for(int i=0; i<20; i++){
+            data[i]=(int)(Math.random()*100);
+        }
+
+        for(int i=0; i<20; i++){
+            System.out.print(data[i] + " ");
+        }
+        System.out.println();
+
+        for (int i = 0; i < data.length - 1; i++) {
+            int minIndex = i;
+
+            for (int j = i + 1; j < data.length; j++) {
+                if (data[j] < data[minIndex]) {
+                    minIndex = j;
+                }
+            }
+
+            int temp = data[i];
+            data[i] = data[minIndex];
+            data[minIndex] = temp;
+        }
+
+        for (int i = 0; i < 20; i++) {
+            System.out.print(data[i] + " ");
+        }
+        System.out.println();
+    }
+}
+```
+![Alt homework7](./images/homework7.png)
+
+### Homework8
+```java
+public class Homework8 {
+    public static void main(String[] args) {
+        int students = 30;
+        int subjects = 4;
+        int[][] score = new int[students][subjects];
+
+        for (int i = 0; i < students; i++) {
+            int sum = 0;
+            for (int j = 0; j < subjects; j++) {
+                score[i][j] = (int) (Math.random() * 101);
+                sum += score[i][j];
+            }
+            System.out.printf("%d\t%d\t%d\t%d\t%d\n", score[i][0], score[i][1], score[i][2], score[i][3], sum);
+        }
+    }
+}
+```
+![Alt homework8](./images/homework8.png)
