@@ -237,3 +237,91 @@ public class Homework8 {
 }
 ```
 ![Alt homework8](./images/homework8.png)
+
+
+### Homework9
+```java
+public class Homework9 {
+	// 10 to 2
+	public static String ToBinary(int data) {
+		String result = "";
+
+		if (data == 0) {
+			result = "0";
+		} else {
+			while (data > 0) {
+				int remainder = data % 2;
+				result = remainder + result;
+				data /= 2;
+			}
+		}
+
+		return result;
+	}
+
+	// 2 to 10
+	public static int ToDecimal(String data) {
+		int result = 0;
+		for (int i = 0; i < data.length(); i++) {
+			int bit = data.charAt(data.length() - 1 - i) - '0';
+			result += bit * Math.pow(2, i);
+		}
+		return result;
+	}
+
+	public static void main(String[] args) {
+		if (args[0].equals("2")) {
+			// 2진법 -> 10진법
+			if (args[1].contains(".")) {
+				// 소수
+				String[] parts = args[1].split("\\.");
+
+				double result = 0.0;
+				double weight = 0.5;
+
+				for (int i = 0; i < parts[1].length(); i++) {
+					int bit = parts[1].charAt(i) - '0';
+					
+					if (bit == 1) {
+						result += weight;
+					}
+					
+					weight /= 2;
+				}
+
+				double finalResult = ToDecimal(parts[0]) + result;
+
+				System.out.println("2진수 => 10진수 결과: " + finalResult);
+			} else {
+				// 정수
+				System.out.println("2진수 => 10진수 결과: " + ToDecimal(args[1]));
+			}
+
+		} else {
+			// 10진법 => 2진법
+			if (args[1].contains(".")) {
+				// 소수
+				String resultAfter = "";
+				String[] parts = args[1].split("\\.");
+				int precision = 10;
+				int dataBefore = Integer.parseInt(parts[0]);
+				double dataAfter = Double.parseDouble("0." + parts[1]);
+
+				while (dataAfter > 0 && precision > 0) {
+					dataAfter *= 2;
+					int bit = (int) dataAfter;
+					resultAfter += bit;
+					dataAfter -= bit;
+					precision--;
+				}
+	
+				System.out.println("10진수 => 2진수 결과: " + ToBinary(Integer.parseInt(parts[0])) + "." + resultAfter);
+			} else {
+				// 정수
+				System.out.println("10진수 => 2진수 결과: " + ToBinary(Integer.parseInt(args[1])));
+			}
+		}
+	}
+}
+```
+![Alt homework8](./images/homework9.png)
