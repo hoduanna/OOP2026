@@ -324,4 +324,49 @@ public class Homework9 {
 	}
 }
 ```
-![Alt homework8](./images/homework9.png)
+![Alt homework9](./images/homework9.png)
+
+
+### Homework10
+```java
+public class Homework10 {
+    public static void main(String[] args) {
+        int n = Integer.parseInt(args[0]);
+        int max = Integer.parseInt(args[1]);
+        int size = Integer.parseInt(args[2]);
+        int scale = Integer.parseInt(args[3]);
+        int hSize = max / size;
+        
+        int[] arr = new int[n];
+        int[] hist = new int[hSize];
+        
+        for (int i = 0; i < n; i++) {
+            arr[i] = (int) (Math.random() * max);
+        }
+        
+        for (int i = 0; i < n; i++) {
+            System.out.print(arr[i] + " ");  
+        }
+        System.out.println();  
+        
+        for (int i = 0; i < n; i++) {
+            hist[arr[i] / size]++;
+        }
+        
+        for (int i = 0; i < hSize; i++) {
+            int start = i * size;
+            int end = (i + 1) * size - 1;
+            
+            System.out.print(start + "~" + end + " : ");
+            
+            int count = hist[i] / scale;
+            for (int j = 0; j < count; j++) {
+                System.out.print("#");
+            }
+            System.out.println();
+        }
+    }
+}
+
+```
+![Alt homework10](./images/homework10.png)
