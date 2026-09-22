@@ -436,4 +436,101 @@ public class Homework11 {
 ![Alt homework12](./images/homework12.png)
 
 
+### Homework13
+```java
+import java.util.Scanner;
+
+public class Homework13 {
+	public static void main(String[] args) {
+		while (true) {
+			Scanner scanner = new Scanner(System.in);
+			String inputString = scanner.nextLine();
+			String[] arrOfStr = inputString.split(" ");
+			
+			double result = 0;
+			
+			if (arrOfStr.length == 3) {
+				double n1 = Double.parseDouble(arrOfStr[0]);
+				String op = arrOfStr[1];
+				double n2 = Double.parseDouble(arrOfStr[2]);
+				
+				if (op.equals("+")) {
+					result = n1 + n2;
+				} else if (op.equals("-")) {
+					result = n1 - n2;
+				} else if (op.equals("*")) {
+					result = n1 * n2;
+				} else if (op.equals("/")) {
+					result = n1 / n2;
+				} else if (op.equals("#")) {
+					result = (n1 + n2) / 2;
+				}
+				
+			} else if (arrOfStr.length == 5) {
+				double n1 = Double.parseDouble(arrOfStr[0]);
+				String op1 = arrOfStr[1];
+				double n2 = Double.parseDouble(arrOfStr[2]);
+				String op2 = arrOfStr[3];
+				double n3 = Double.parseDouble(arrOfStr[4]);
+				
+				double temp = 0;
+				if (op2.equals("*") || op2.equals("/") || op2.equals("#")){
+					if (op2.equals("+")) {
+						temp = n2 + n3;
+					} else if (op2.equals("-")) {
+						temp = n2 - n3;
+					} else if (op2.equals("*")) {
+						temp = n2 * n3;
+					} else if (op2.equals("/")) {
+						temp = n2 / n3;
+					} else if (op2.equals("#")) {
+						temp = (n2 + n3) / 2;
+					}
+
+					if (op1.equals("+")) {
+						result = temp + n1;
+					} else if (op1.equals("-")) {
+						result = temp - n1;
+					} else if (op1.equals("*")) {
+						result = temp * n1;
+					} else if (op1.equals("/")) {
+						result = temp / n1;
+					} else if (op1.equals("#")) {
+						result = (temp + n1) / 2;
+					}
+				}else{
+					if (op1.equals("+")) {
+						temp = n1 + n2;
+					} else if (op1.equals("-")) {
+						temp = n1 - n2;
+					} else if (op1.equals("*")) {
+						temp = n1 * n2;
+					} else if (op1.equals("/")) {
+						temp = n1 / n2;
+					} else if (op1.equals("#")) {
+						temp = (n1 + n2) / 2;
+					}
+					
+					if (op2.equals("+")) {
+						result = temp + n3;
+					} else if (op2.equals("-")) {
+						result = temp - n3;
+					} else if (op2.equals("*")) {
+						result = temp * n3;
+					} else if (op2.equals("/")) {
+						result = temp / n3;
+					} else if (op2.equals("#")) {
+						result = (temp + n3) / 2;
+					}
+				}
+			}
+			
+			System.out.println(result);
+		}
+	}
+}
+```
+![Alt homework13](./images/homework13.png)
+
+
 
