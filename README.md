@@ -534,3 +534,151 @@ public class Homework13 {
 
 
 
+### Homework14
+```java
+public class homework14 {
+    public static void main(String[] args) {
+        int size = 100;
+        int data[] = new int[size];
+        for(int i = 0; i < size; i++) {
+            data[i] = (int)(Math.random() * 100);
+        }
+        
+        Numbers obj = new Numbers(data);
+        obj.display();
+        System.out.printf("Arithmetic Mean : %5.2f\n", obj.getArithmaticMean());
+        System.out.printf("Geometric Mean : %5.2f\n", obj.getGeometricMean());      
+        System.out.printf("Harmonic Mean : %5.2f\n", obj.getHarmonicMean());
+        System.out.printf("Median : %d\n", obj.getMedian());
+        
+        System.out.println("\n[ 수직 히스토그램 ]");
+        obj.drawHistogram(0, 100, 10);
+    }
+}
+
+class Numbers {
+    int num[];
+    
+    Numbers(int n[]) {
+        num = n;
+    }
+    
+    double getTotal() {
+        double sum = 0;
+        for (int i = 0; i < num.length; i++) {
+            sum = sum + num[i];
+        }
+        return sum;
+    }
+    
+    double getArithmaticMean() {
+        return getTotal() / num.length;
+    }
+    
+    double getHarmonicMean() {
+        double sum2 = 0;
+        for (int i = 0; i < num.length; i++) {
+            if (num[i] == 0) {
+                continue;
+            }
+            sum2 = sum2 + (1.0 / num[i]);
+        }
+        return num.length / sum2;
+    }
+    
+    double getGeometricMean() {
+        double gop = 1;
+        for (int i = 0; i < num.length; i++) {
+            if (num[i] == 0) {
+                gop = gop * 1;
+            } else {
+                gop = gop * num[i];
+            }
+        }
+        return Math.pow(gop, 1.0 / num.length);
+    }    
+    
+    int getMedian() {
+        sorting();
+        int m = 0;
+        if (num.length % 2 == 0) {
+            m = (num[num.length / 2 - 1] + num[num.length / 2]) / 2;
+        } else {
+            m = num[num.length / 2];
+        }
+        return m;
+    }
+    
+    void sorting() {
+        for (int i = 0; i < num.length - 1; i++) {
+            for (int j = 0; j < num.length - 1 - i; j++) {
+                if (num[j] > num[j + 1]) {
+                    int temp = num[j];
+                    num[j] = num[j + 1];
+                    num[j + 1] = temp;
+                }
+            }
+        }
+    }
+    
+    void drawHistogram(int start, int end, int count) {
+        int r = (end - start) / count;
+        int[] h = new int[count];
+        
+        for (int i = 0; i < num.length; i++) {
+            int idx = (num[i] - start) / r;
+            if (idx >= count) {
+                idx = count - 1;
+            }
+            if (idx >= 0) {
+                h[idx]++;
+            }
+        }
+        
+        int max = 0;
+        for (int i = 0; i < count; i++) {
+            if (h[i] > max) {
+                max = h[i];
+            }
+        }
+        
+        for (int i = max; i > 0; i--) {
+            System.out.printf("%3d | ", i);
+            for (int j = 0; j < count; j++) {
+                if (h[j] >= i) {
+                    System.out.print("  #   ");
+                } else {
+                    System.out.print("      ");
+                }
+            }
+            System.out.println();
+        }
+        
+        System.out.print("----+-");
+        for (int j = 0; j < count; j++) {
+            System.out.print("------");
+        }
+        System.out.println();
+        
+        System.out.print("      ");
+        for (int j = 0; j < count; j++) {
+            int s = start + (j * r);
+            int e = start + ((j + 1) * r) - 1;
+            System.out.printf("%-5s ", s + "~" + e);
+        }
+        System.out.println();
+    }
+    
+    void display() {
+        System.out.printf("%3d :", num.length);      
+        for(int i = 0; i < num.length; i++) {
+            System.out.printf("%3d ", num[i]);
+        }
+        System.out.println();
+    }   
+}
+
+```
+![Alt homework14](./images/homework14.png)
+
+
