@@ -551,7 +551,6 @@ public class homework14 {
         System.out.printf("Harmonic Mean : %5.2f\n", obj.getHarmonicMean());
         System.out.printf("Median : %d\n", obj.getMedian());
         
-        System.out.println("\n[ 수직 히스토그램 ]");
         obj.drawHistogram(0, 100, 10);
     }
 }
